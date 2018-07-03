@@ -1,0 +1,19 @@
+<div>
+  <!-- claining multiple pipes -->
+  <p>{{course.title | lowercase | uppercase | summary}}</p>
+  <p>{{course.students | number}}</p>
+  <p>{{course.rating | number:'1.1-1'}}</p>
+  <!-- number:'number of integer digit to show 
+              . min number to digit after point to show
+              - max number to digit after point to show
+    number = 4.9745
+    number:'1.1-1' = 5.0
+    number: '1.2-2' = 4.97
+    number: '2.2-2' = 05.47
+  -->
+  <p>{{course.price | currency:'GBP':true}}</p> 
+  <!-- <p>{{course.releaseDate | date:'mediumDate'}}</p>   -->
+  <p>{{course.releaseDate | date:'dd/MM/yyyy'}}</p>
+
+    <!--  -->
+</div>

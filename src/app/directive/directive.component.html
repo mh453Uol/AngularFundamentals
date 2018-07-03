@@ -1,0 +1,80 @@
+<!-- ******* *ngIf ******-->
+<!-- OLD APPROACH !! -->
+<!-- <div *ngIf="courses.length > 0">
+  List of courses
+</div>
+<div *ngIf="courses.length == 0">
+  No courses yet
+</div> -->
+
+
+<!-- NEW APPROACH -->
+<div *ngIf="courses.length > 0; then coursesList else noCourses"></div>
+
+<ng-template #noCourses>
+  No courses yet
+</ng-template>
+<ng-template #coursesList>
+  List of courses
+</ng-template>
+
+<!-- ******** [hidden] ********** -->
+<div [hidden]="courses.length == 0">
+  List of courses
+</div>
+<div [hidden]="courses.length > 0">
+  No courses yet
+</div>
+
+<!-- ********** *ngSwitchCase ********* -->
+<ul class="nav nav-pills">
+  <li class="nav-item">
+    <a class="nav-link" [class.active]="viewMode === 'map'" href="#" (click)="viewMode = 'map'">Map View</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" [class.active]="viewMode === 'list'" href="# " (click)="viewMode = 'list'">List View</a>
+  </li>
+</ul>
+
+<div [ngSwitch]="viewMode">
+  <div *ngSwitchCase="'map'">Map View Content</div>
+  <div *ngSwitchCase="'list'">List View Content</div>
+  <div *ngSwitchDefault>
+    Otherwise
+  </div>
+</div>
+
+
+<!-- *********** *ngFor ***********  -->
+<h2>Topics</h2>
+
+<button type="button" (click)="loadTopics()">Load Topics</button>
+<hr>
+<input type="text" #newTopic>
+<button type="button" (click)="onAdd(newTopic.value)">Add</button>
+<ul>
+  <li *ngFor="let topic of topics; index as i; even as isEven; trackBy: trackTopic">
+    <input #box type="text" [class.text-danger]='isEven' [value]="topic.name" [readonly]="topic.isReadOnly" />
+    <button (click)="onRemove(topic)">X</button>
+    <button [hidden]="!topic.isReadOnly" (click)="onEdit(topic)">Edit</button>
+    <button [hidden]="topic.isReadOnly" (click)="updateTopic(topic, box.value)">Update</button>
+  </li>
+</ul>
+
+
+<i class="fa" [ngClass]="{
+    'fa-heart':isSelected,
+    'fa-star': !isSelected
+  }" (click)="isSelected = true"></i>
+
+<!-- <button [style.backgroundColor]="canSave ? 'blue': 'gray'" [style.color]="canSave ? 'white': 'black'" [style.fontWeight]="canSave ? 'bold':'normal'">
+    Save
+  </button> -->
+
+<button [ngStyle]="{
+      'backgroundColor': canSave ? 'blue':'grey',
+      'color': canSave ? 'white': 'black'
+    }">
+  Save</button>
+
+<h1>{{task?.assignee?.name}} Name:</h1>

@@ -1,0 +1,14 @@
+<div class="card">
+  <div class="card-header clickable" (click)="isClosed = !isClosed">
+    <i class="fa float-right clickable" [ngClass]="{
+      'fa-chevron-up':!isClosed,
+      'fa-chevron-down':isClosed
+    }"></i> {{title}}
+  </div>
+  <div class=" card-body " [hidden]="isClosed ">
+    <!-- with no select for ng-content it will
+    be all the elements in the input open and closing -->
+    <ng-content class="card-text">
+    </ng-content>
+  </div>
+</div>

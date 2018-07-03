@@ -1,20 +1,67 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<div class="container-fluid">
+  <h1>Angular</h1>
+  <app-courses></app-courses>
+  <app-authors></app-authors>
+  <hr>
+  <app-course></app-course>
+  <hr>
+  <hr>
+  <p>{{title | titlecase}}</p>
+  <input type="text" [(ngModel)]="title">
 
+  <app-favourite [is-favorite]="post.isSelected" (on-change)="onFavoriteChange($event)">
+  </app-favourite>
+
+  <span style="padding-left:100px" class="fa fa-star fa-2x"></span>
+
+  <bootstrap-panel>
+    <h1 class="heading">Complex Heading</h1>
+    <div class="body">
+      <h2>Body</h2>
+      <span>Some text here..</span>
+    </div>
+  </bootstrap-panel>
+
+  <hr>
+  <app-like [isSelected]='tweet.isHearted' [count]='tweet.totalCount'></app-like>
+  <hr>
+  <app-directive></app-directive>
+
+  <hr>
+  <h1>Custom Directive</h1>
+  <input type="text" appInputFormat [format]="'uppercase'" />
+
+  <h1>Postfix Evaluation</h1>
+  <input type="text" appExpression [type]="'postfix'" />
+
+  <h1>Zippy Component</h1>
+  <app-zippy title="Hello">
+    <h1>Body</h1>
+    <hr>
+  </app-zippy>
+  <hr>
+  <h1>Template Driven Forms</h1>
+  <app-template-forms></app-template-forms>
+  <hr>
+  <h1>Udemy Form Template Driven Form</h1>
+  <app-course-form></app-course-form>
+  <hr>
+  <h1>Reactive Forms</h1>
+  <app-signup-reactive></app-signup-reactive>
+  <hr>
+  <h1>Reactive Nested Forms</h1>
+  <app-nestedgroup-reactive></app-nestedgroup-reactive>
+  <hr>
+  <h1>Reactive Form Array</h1>
+  <app-formarray-reactive></app-formarray-reactive>
+  <hr>
+  <hr>
+  <h1>Reactive Form Assignment</h1>
+  <app-change-password-reactive></app-change-password-reactive>
+  <hr>
+  <h1>Http (Consuming Data)</h1>
+  <app-posts-httpp></app-posts-httpp>
+  <hr>
+  <h1>Consuming Data Exercise</h1>
+  <app-github-followers></app-github-followers>
+</div>

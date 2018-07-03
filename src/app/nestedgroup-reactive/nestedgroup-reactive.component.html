@@ -1,0 +1,13 @@
+<form [formGroup]="form" (ngSubmit)="log()">
+  <div formGroupName="personal" class="form-group">
+    <div class="alert alert-success">Account</div>
+    <label>Name: </label>
+    <input formControlName="name" type="text" class="form-control" />
+  </div>
+  <div formGroupName="shipping" class="form-group">
+    <div class="alert alert-success">Shipping</div>
+    <label>Address: </label>
+    <input formControlName="address" type="text" class="form-control" />
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

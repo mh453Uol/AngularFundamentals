@@ -1,0 +1,38 @@
+<h2>{{ title }}</h2>
+<!-- <h2>{{ "**" + getTitle() }}</h2>  -->
+<!-- string interpolation {{ expression }} -->
+
+<ul>
+  <!-- directive manipulate the DOM,
+         all are prefixed with *. 
+         ngFor iterates a collection.
+    -->
+  <li *ngFor="let course of courses">
+    {{course}}
+  </li>
+</ul>
+
+<!-- [class.***] we are dynamically setting 
+    class based on field-->
+<button class="btn" [class.btn-primary]="isPrimary" [class.btn-danger]="isDanger">Bootstrap</button>
+
+<div (click)="onClick()">
+  <label (click)="onRadioClick('primary',$event)" class="radio-inline"><input type="radio" name="button-class">btn-primary</label>
+  <label (click)="onRadioClick('danger',$event)" class="radio-inline"><input type="radio" name="button-class">btn-danger</label>
+</div>
+
+<h1 [style.backgroundColor]="isDanger ? 'red' : 'blue'">
+  <div *ngIf="isPrimary">btn-primary applied</div>
+  <div *ngIf="isDanger">btn-danger applied</div>
+</h1>  
+
+<br/>
+<label>Enter email:</label>
+<input #email type="text" (keyup.enter)="onKeyUp($event.target.value,email.value)"/>
+
+<br/>
+<br/>
+<h3>Author: {{author}}</h3>
+<label>Enter author name:</label>
+<!-- [()] Banana in a box (2 way binding) ngModel from forms -->
+<input type="text" [(ngModel)]="author"/>

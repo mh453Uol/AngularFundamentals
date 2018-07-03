@@ -1,0 +1,5 @@
+<form [formGroup]="form">
+  <input #topic (keyup.enter)="addTopic(topic)" type="text" class="form-control">
+  <input #test *ngFor="let t of topics.controls;let i = index" type="text" [value]="t.value" (click)="log(t)" (change)="editTopic(i,test.value)"
+  />
+</form>

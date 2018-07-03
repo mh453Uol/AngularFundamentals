@@ -1,0 +1,30 @@
+<form ngForm #form="ngForm">
+  <div class="form-group">
+    <label for="coursename">Course Name</label>
+    <input required minlength="5" ngModel name="coursename" #coursename="ngModel" type="text" class="form-control" id="coursename"
+      aria-describedby="coursenameHelp" placeholder="Enter Coursename" />
+    <div class="alert alert-danger" *ngIf="!coursename.valid && coursename.touched">
+      <div *ngIf="coursename.errors.required">Course Name is required</div>
+      <div *ngIf="coursename.errors.minlength">Course Name needs to be at least {{coursename.errors.minlength.requiredLength}} charectars</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="category">Category</label>
+    <select required ngModel name="category" #category="ngModel" type="text" class="form-control" id="category" aria-describedby="categoryHelp">
+      <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
+    </select>
+    <div class="alert alert-danger" *ngIf="!category.valid && category.touched">
+      <div *ngIf="category.errors.required">Category is required</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="form-check">
+      <input ngModel name="hasGuarantee" type="checkbox" class="form-check-input" id="hasGuarantee">
+      <label class="form-check-label " for="hasGuarantee ">30-days money-back guarantee</label>
+    </div>
+  </div>
+
+  <button type="submit " class="btn btn-primary " [disabled]="form.invalid ">Submit</button>
+  <div>{{form.value | json}}</div>
+</form>
