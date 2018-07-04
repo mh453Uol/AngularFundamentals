@@ -1,3 +1,6 @@
+import { NotfoundComponent } from './notfound/notfound.component';
+import { GithubProfileComponent } from './github-profile/github-profile.component';
+import { HomeComponent } from './home/home.component';
 import { GithubFollowersService } from './../services/github-followers.service';
 import { AppErrorHandler } from './common/app-error-hander';
 import { PostService } from '../services/post.service';
@@ -32,6 +35,9 @@ import { FormarrayReactiveComponent } from './formarray-reactive/formarray-react
 import { ChangePasswordReactiveComponent } from './change-password-reactive/change-password-reactive.component';
 import { PostsHttppComponent } from './posts-httpp/posts-httpp.component';
 import { GithubFollowersComponent } from './github-followers/github-followers.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { RouterModule } from '@angular/router';
+import { BlogArchiveComponent } from './blog-archive/blog-archive.component';
 
 @NgModule({
   declarations: [
@@ -55,13 +61,47 @@ import { GithubFollowersComponent } from './github-followers/github-followers.co
     FormarrayReactiveComponent,
     ChangePasswordReactiveComponent,
     PostsHttppComponent,
-    GithubFollowersComponent
+    GithubFollowersComponent,
+    NavBarComponent,
+    HomeComponent,
+    GithubProfileComponent,
+    NotfoundComponent,
+    BlogArchiveComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpModule
+    HttpModule,
+    RouterModule.forRoot([
+      //More specific routes at start
+      // Home is path: ''
+      {
+        path: '',
+        component: HomeComponent
+      },
+      {
+        path: 'archive/:year/:month',
+        component: BlogArchiveComponent
+      },
+      {
+        path: 'followers/:username/:userId',
+        component: GithubProfileComponent
+      },
+      {
+        path: 'followers',
+        component: GithubFollowersComponent
+      },
+      {
+        path: 'posts',
+        component: PostsHttppComponent
+      },
+      //Wildcard for anything else 
+      {
+        path: '**',
+        component: NotfoundComponent
+      }
+    ])
   ],
   //Angular create a single instance 
   //and shares it across multiple 

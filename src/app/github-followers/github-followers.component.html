@@ -1,8 +1,10 @@
+<h1>SORT BY: {{sort}}</h1>
+<h1>PAGE: {{page}}</h1>
 <div *ngFor="let follower of followers" class="card" style="width: 18rem;">
   <img class="card-img-top" [src]="follower.avatar_url" [alt]="follower.login">
   <div class="card-body">
     <h5 class="card-title">
-      <a [href]="follower.html_url">{{follower.login}}</a>
+      <a [routerLink]="['/followers',follower.login,follower.id]">{{follower.login}}</a>
     </h5>
   </div>
 </div>
